@@ -6,9 +6,12 @@ import logging
 import time
 from collections import namedtuple
 
-from RPi import GPIO
-
+import orangepi.plus_2e
+import OPi.GPIO as GPIO
 MAX_CHANGES = 67
+
+GPIO.setwarnings(False)
+GPIO.setmode(orangepi.plus_2e.BCM)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -54,8 +57,6 @@ class RFDevice:
         self.rx_proto = None
         self.rx_bitlength = None
         self.rx_pulselength = None
-
-        GPIO.setmode(GPIO.BCM)
         _LOGGER.debug("Using GPIO " + str(gpio))
 
     def cleanup(self):
