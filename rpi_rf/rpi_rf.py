@@ -231,8 +231,8 @@ class RFDevice:
 
         return False
     
-    def _sleep(self, delay):      
-    +        _delay = delay / 100
-    +        end = time.time() + delay - _delay
-    +        while time.time() < end:
-    +            time.sleep(_delay)
+    def _sleep(self, delay):
+        _delay = delay / 100
+        end = time.time() + delay - _delay
+        while time.time() < end:
+            time.sleep(_delay)
